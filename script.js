@@ -106,7 +106,7 @@ $("#mapGrid").innerHTML = D.maps.map((m, i) => `
 const certCard = (c, i) => `
   <button class="cert reveal" data-kind="cert" data-i="${i}" data-cursor="View">
     <div class="thumb">${media(c.image, certSVG(c, i), c.title)}</div>
-    <strong>${esc(c.title)}</strong><span>${esc(c.issuer)} · ${esc(c.date)}</span>
+    <strong>${esc(c.title)}</strong><span>${esc(c.issuer)}</span>${c.group !== "courses" && c.details ? `<p class="cert-desc">${esc(c.details)}</p>` : ""}
   </button>`;
 const certGroups = [["participation", "Participation & volunteering"], ["courses", "Completed studies"]];
 $("#certList").innerHTML = certGroups.map(([g, label]) => {
@@ -273,7 +273,7 @@ function showPage() {
   const nav = pages.length > 1 ? `<div class="lb-pages">${pages.map((_, k) => `<button data-page="${k}" class="${k === lbPage ? "on" : ""}">Page ${k + 1}</button>`).join("")}</div>` : "";
   lbInfo.innerHTML = lbKind === "map"
     ? `<strong>${esc(it.title)}</strong><span>${esc(it.year)} · ${esc(it.tools)} — ${esc(it.description)}</span>`
-    : `<strong>${esc(it.title)}</strong><span>${esc(it.issuer)} · ${esc(it.date)}</span>${it.details ? `<p class="lb-details">${esc(it.details)}</p>` : ""}${nav}`;
+    : `<strong>${esc(it.title)}</strong><span>${[it.issuer, it.date].filter(Boolean).map(esc).join(" · ")}</span>${it.details ? `<p class="lb-details">${esc(it.details)}</p>` : ""}${nav}`;
   zoom = 1; px = py = 0; lbImg.style.transformOrigin = "50% 50%"; apply();
   requestAnimationFrame(() => lbImg.style.setProperty("--h", Math.max(200, stage.clientHeight - 32) + "px"));
 }
@@ -289,11 +289,13 @@ lbInfo.addEventListener("click", e => { const b = e.target.closest("[data-page]"
 function closeLB() { lb.classList.remove("open"); lb.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; lastFocus?.focus(); }
 document.addEventListener("click", e => { const b = e.target.closest("[data-kind]"); if (b) openLB(b.dataset.kind, +b.dataset.i); });
 $("#lbClose").addEventListener("click", closeLB);
-stage.addEventListener("click", e => { if (e.target === stage) closeLB(); });
+let dragged = false;
+stage.addEventListener("click", e => { if (dragged) { dragged = false; return; } if (e.target === stage) closeLB(); });
 addEventListener("keydown", e => { if (e.key === "Escape" && lb.classList.contains("open")) closeLB(); });
 stage.addEventListener("wheel", e => { e.preventDefault(); zoom = Math.min(5, Math.max(1, zoom * (e.deltaY < 0 ? 1.15 : 0.87))); if (zoom === 1) px = py = 0; apply(); }, { passive: false });
 stage.addEventListener("dblclick", () => { zoom = zoom > 1 ? 1 : 2.5; px = py = 0; apply(); });
-stage.addEventListener("pointerdown", e => { if (zoom > 1) { drag = { x: e.clientX - px, y: e.clientY - py }; stage.setPointerCapture(e.pointerId); } });
-stage.addEventListener("pointermove", e => { if (drag) { px = e.clientX - drag.x; py = e.clientY - drag.y; apply(); } });
+stage.addEventListener("pointerdown", e => { dragged = false; if (zoom > 1) { e.preventDefault(); drag = { x: e.clientX - px, y: e.clientY - py, sx: e.clientX, sy: e.clientY }; stage.setPointerCapture(e.pointerId); } });
+stage.addEventListener("pointermove", e => { if (drag) { if (Math.abs(e.clientX - drag.sx) + Math.abs(e.clientY - drag.sy) > 4) dragged = true; px = e.clientX - drag.x; py = e.clientY - drag.y; apply(); } });
 stage.addEventListener("pointerup", () => { drag = null; });
+stage.addEventListener("pointercancel", () => { drag = null; });
 }

@@ -20,7 +20,7 @@ window.PORTFOLIO = {
     {
       title: "Urban Heat Under Mediterranean Skies",
       year: "2026",
-      role: "Bachelor's thesis (NGEK11) · Lund University · Pass with distinction",
+      role: "Bachelor's thesis · Lund University · Pass with distinction",
       tags: ["Urban heat islands", "Landsat LST", "MODIS", "Google Earth Engine", "ArcGIS Pro"],
       image: "images/project-thesis.jpg",
       description:
@@ -30,7 +30,7 @@ window.PORTFOLIO = {
     {
       title: "Soil Erosion Risk in the Nyamagabe Catchment, Rwanda",
       year: "2026",
-      role: "Group field project (NGEA09) · Fieldwork in Rwanda",
+      role: "Group field project · Fieldwork in Rwanda",
       tags: ["RUSLE", "Fieldwork", "Soil erosion", "ArcGIS Pro"],
       image: "images/project-rwanda.jpg",
       description:
@@ -40,11 +40,11 @@ window.PORTFOLIO = {
     {
       title: "Verkaå Catchment Land Cover Study",
       year: "2025",
-      role: "Group project (NGEA03 Remote Sensing) · Pass with distinction",
+      role: "Group project · Remote sensing course · Pass with distinction",
       tags: ["Aerial photo interpretation", "Change detection", "Sentinel-2", "Python"],
       image: "images/project-verka.jpg",
       description:
-        "A remote sensing pilot study in Österlen, Scania, that mapped land cover from aerial photos of 1940, 1999 and 2016 and from Sentinel-2 imagery, and measured how the landscape changed over almost 80 years. I was responsible for the change detection analysis (written in Python), digitised two of the Sentinel-2 areas, brought in extra data, did the final editing and made the video visualisation.",
+        "A remote sensing pilot study in Österlen, Scania, that mapped land cover from aerial photos of 1940, 1999 and 2016 and from Sentinel-2 imagery, and measured how the landscape changed over almost 80 years. I was responsible for the change detection analysis (written in Python), digitised two of the Sentinel-2 areas and brought in extra data. I also created and edited the video that went along with our final submission.",
       link: ""
     },
     {
@@ -55,6 +55,16 @@ window.PORTFOLIO = {
       image: "images/project-dnbr.jpg",
       description:
         "Coded an ArcGIS Pro tool in Python (ArcPy) that detects how badly an area has burned. You give it Landsat images from before and after a fire. It calculates the differenced Normalized Burn Ratio (dNBR), sorts every pixel into seven burn-severity classes with a ready-made colour scheme, and can export a CSV of area statistics. It also gives clear error messages to help users. I tested it on the 2024 Jasper wildfire in Canada and the 2021 Dixie fire in California.",
+      link: ""
+    },
+    {
+      title: "Vintergrönt: A Winter Greenspace Index for Lund",
+      year: "2026",
+      role: "SESAC hackathon · Society from Space Challenge · Team of six",
+      tags: ["Hackathon", "Urban green space", "Satellite data", "Shadow modelling", "Interactive map"],
+      image: "images/project-vintergront.jpg",
+      description:
+        "Green spaces are usually judged by how they look in summer, but in December Lund gets only about seven hours of daylight, and that is when people most need to get outside. In a two-day hackathon our team built a Winter Quality Index for Lund's parks. It combines hours of winter sunlight (from a shadow model of the sun's path on 21 December, with bare tree canopies treated as see-through) with how green each park stays in winter, measured from satellite data. The index showed which parks need improvements most. We added a winter biodiversity index, a look at lighting near parks after dark and an interactive map, and suggested fixes such as evergreen trees, winter-flowering plants, better lighting and snow clearing.",
       link: ""
     }
   ],
@@ -72,10 +82,15 @@ window.PORTFOLIO = {
   ],
 
   certificates: [
-    { group: "participation", title: "Volunteer, ICOS Science Conference 2026", issuer: "ICOS ERIC Head Office", date: "September 2026", image: "images/cert-icos.jpg" },
-    { group: "participation", title: "Society from Space Challenge 2026 (hackathon)", issuer: "SESAC – Swedish Competence Centre for Satellite-Enabled Social Science Analytics", date: "November 2026", image: "images/cert-seasac.jpg", details: "Two-day hackathon in Lund, using satellite data to answer real urban questions about Lund and Nairobi in an interdisciplinary team." },
-    { group: "participation", title: "ECO-Syria Mapathon", issuer: "Lund University, Dept. of Physical Geography and Ecosystem Science", date: "2024 & 2025", image: "images/cert-mapathon.jpg", details: "Took part in both 2024 and 2025. Created training and validation data for land cover mapping in Syria using Sentinel-2 and Google Earth imagery." },
-    { group: "courses", title: "Bachelor of Science, Physical Geography and Ecosystem Science", issuer: "Lund University · 180 credits", date: "June 2026", image: "images/cert-bachelor-1.jpg", pages: ["images/cert-bachelor-1.jpg", "images/cert-bachelor-2.jpg"], details: "Courses: Introduction to the Global Environment · Remote Sensing for Landscape Studies (distinction) · Ecosystems Analysis (distinction) · Theory and Methods of Physical Geography · Land Surface Processes and Landscape Dynamics (distinction) · GIS Basic Course · GIS Advanced Course · Hydrology · The Climate System · Bachelor's Degree Project (distinction)." },
-    { group: "courses", title: "Exchange semester, Queen's University, Canada", issuer: "Queen's University, Kingston", date: "Fall 2025", image: "images/cert-queens.jpg", details: "Courses: Maps and Society · Photogrammetry · Environmental Assessment · Foundations in Visual Art · Approaches to Film Form. Term GPA 3.74." }
+    { group: "participation", title: "Volunteer, ICOS Science Conference 2026", issuer: "ICOS ERIC", image: "images/cert-icos.jpg",
+      details: "ICOS (Integrated Carbon Observation System) is a European research network that measures greenhouse gases in the atmosphere, in ecosystems and in the ocean. I volunteered at its international science conference, held in Lund, helping it run smoothly for researchers on site and online." },
+    { group: "participation", title: "Society from Space Challenge (hackathon)", issuer: "SESAC", image: "images/cert-seasac.jpg",
+      details: "SESAC, the Swedish Competence Centre for Satellite-Enabled Social Science Analytics, connects Earth observation with social science. In its two-day hackathon, interdisciplinary teams used satellite data to answer real urban questions about Lund and Nairobi. Our team built Vintergrönt, a winter green space index for Lund." },
+    { group: "participation", title: "ECO-Syria Mapathon", issuer: "Lund University", image: "images/cert-mapathon.jpg",
+      details: "A mapathon for the ECO-Syria research project, where volunteers create training and validation data for land cover maps of Syria by interpreting Sentinel-2 and Google Earth imagery. The data is shared openly for other researchers. I took part twice, in 2024 and 2025." },
+    { group: "courses", title: "Bachelor of Science, Physical Geography and Ecosystem Science", issuer: "Lund University · 180 credits", image: "images/cert-bachelor-1.jpg", pages: ["images/cert-bachelor-1.jpg", "images/cert-bachelor-2.jpg"],
+      details: "Courses: Introduction to the Global Environment · Remote Sensing for Landscape Studies (distinction) · Ecosystems Analysis (distinction) · Theory and Methods of Physical Geography · Land Surface Processes and Landscape Dynamics (distinction) · GIS Basic Course · GIS Advanced Course · Hydrology · The Climate System · Bachelor's Degree Project (distinction)." },
+    { group: "courses", title: "Exchange semester, Queen's University, Canada", issuer: "Queen's University, Kingston", image: "images/cert-queens.jpg",
+      details: "Courses: Maps and Society · Photogrammetry · Environmental Assessment · Foundations in Visual Art · Approaches to Film Form. Term GPA 3.74." }
   ]
 };

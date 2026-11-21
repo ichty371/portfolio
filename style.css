@@ -137,10 +137,11 @@ h2{font:800 clamp(36px,6vw,76px)/1 var(--display);letter-spacing:-.03em;margin:0
 .lb-pages button.on,.lb-pages button:hover{background:var(--accent);border-color:var(--accent);color:#111}
 .cert strong{font:600 16px/1.35 var(--display)}
 .cert span{color:var(--muted);font-size:14px}
+.cert-desc{margin:0;color:var(--ink);opacity:.85;font-size:14px;line-height:1.55}
 
 /* ---------- contact ---------- */
 .contact{text-align:center;padding-block:clamp(100px,14vw,200px)}
-.big-mail{display:inline-block;font:800 clamp(28px,7vw,96px)/1.05 var(--display);letter-spacing:-.03em;overflow-wrap:anywhere;background:linear-gradient(90deg,var(--ink) 50%,var(--accent) 50%);background-size:200% 100%;background-position:0 0;-webkit-background-clip:text;background-clip:text;color:transparent;transition:background-position .6s cubic-bezier(.2,.9,.2,1)}
+.big-mail{display:inline-block;font:800 min(84px,calc((100vw - 2 * max(5vw,16px)) / 13.5))/1.1 var(--display);letter-spacing:-.03em;white-space:nowrap;max-width:100%;background:linear-gradient(90deg,var(--ink) 50%,var(--accent) 50%);background-size:200% 100%;background-position:0 0;-webkit-background-clip:text;background-clip:text;color:transparent;transition:background-position .6s cubic-bezier(.2,.9,.2,1)}
 .big-mail:hover{background-position:-100% 0}
 .socials{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
 .socials a{min-height:48px;display:inline-flex;align-items:center;padding:0 22px;border:1px solid var(--line);border-radius:999px;transition:border-color .3s,color .3s}
@@ -152,7 +153,7 @@ h2{font:800 clamp(36px,6vw,76px)/1 var(--display);letter-spacing:-.03em;margin:0
 .lightbox.open{opacity:1;pointer-events:auto}
 .lb-stage{min-height:0;overflow:hidden;display:grid;place-items:center;touch-action:none}
 .lb-img{width:min(90vw,1200px,calc(var(--h,76vh) * var(--ar,1)));max-height:var(--h,76vh);aspect-ratio:var(--ar,4/3);transform-origin:0 0;transition:transform .08s linear}
-.lb-img img,.lb-img svg{width:100%;height:100%;object-fit:contain;border-radius:8px;background:#fff;user-select:none;-webkit-user-drag:none}
+.lb-img{cursor:grab}.lb-img img,.lb-img svg{pointer-events:none;width:100%;height:100%;object-fit:contain;border-radius:8px;background:#fff;user-select:none;-webkit-user-drag:none}
 .lb-info{padding:16px max(5vw,16px) 28px;text-align:center}
 .lb-info strong{font:600 20px var(--display);display:block}
 .lb-info span{color:var(--muted);font-size:15px}
