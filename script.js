@@ -72,7 +72,7 @@ const media = (img, fallback, alt) => img ? `<img src="${esc(img)}" alt="${esc(a
 
 /* ---------- fill the page from data.js ---------- */
 const initials = D.name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
-$("#logo").innerHTML = `${esc(initials)}<b>.</b>`;
+$("#logo").innerHTML = `<img src="images/logo.svg" alt="${esc(D.name)}">`;
 document.title = `${D.name} — Portfolio`;
 $("#heroRole").textContent = D.role;
 $("#heroIntro").textContent = D.intro;
