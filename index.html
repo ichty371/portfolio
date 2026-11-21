@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio</title>
+<meta name="description" content="Portfolio: projects, maps and certificates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="compass" href="#top" id="compass" aria-label="Back to top" data-cursor="Top">
+  <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="none" stroke="currentColor" stroke-opacity=".25"/><circle id="ring" cx="30" cy="30" r="27" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="170" stroke-dashoffset="170" transform="rotate(-90 30 30)"/><g id="needle"><path d="M30 10 L34 30 L30 28 L26 30Z" fill="var(--accent)"/><path d="M30 50 L34 30 L30 32 L26 30Z" fill="currentColor" opacity=".6"/></g><text x="30" y="8" text-anchor="middle" font-size="6" fill="currentColor">N</text></svg>
+</a>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"><span id="cursorLabel"></span></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="logo" id="logo"></a>
+  <nav>
+    <a href="#projects" data-link>Projects</a>
+    <a href="#maps" data-link>Maps</a>
+    <a href="#certificates" data-link>Certificates</a>
+    <a href="#contact" data-link>Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <canvas id="topo" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <p class="kicker reveal" id="heroRole"></p>
+      <h1 id="heroName" aria-label=""></h1>
+      <p class="hero-intro reveal" id="heroIntro"></p>
+      <div class="hero-cta reveal">
+        <a href="#projects" class="btn magnetic" data-cursor="Go">See my work</a>
+        <a href="#contact" class="btn ghost magnetic" data-cursor="Hi!">Get in touch</a>
+      </div>
+    </div>
+    <div class="coords" id="coords">59.3293° N · 18.0686° E</div>
+    <div class="scroll-hint" aria-hidden="true"><span></span></div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+  <section class="band" id="projects">
+    <div class="sec-head reveal">
+      <h2>Projects</h2>
+      <p>Things I built, researched and took part in.</p>
+    </div>
+    <div class="projects" id="projectList"></div>
+  </section>
+
+  <section class="band alt" id="maps">
+    <div class="sec-head reveal">
+      <h2>Maps</h2>
+      <p>Click a map to open it full size. Scroll to zoom, drag to move around.</p>
+    </div>
+    <div class="maps" id="mapGrid"></div>
+  </section>
+
+  <section class="band" id="certificates">
+    <div class="sec-head reveal">
+      <h2>Certificates</h2>
+      <p>Recognition for projects and courses I have completed.</p>
+    </div>
+    <div class="certs" id="certList"></div>
+  </section>
+
+  <section class="band contact" id="contact">
+    <p class="kicker reveal">Let's work together</p>
+    <a class="big-mail reveal magnetic" id="mail" data-cursor="Email"></a>
+    <div class="socials reveal" id="socials"></div>
+  </section>
+</main>
+
+<footer class="foot"><span id="footName"></span> · <span id="year"></span></footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <div class="lb-stage" id="lbStage"><div class="lb-img" id="lbImg"></div></div>
+  <div class="lb-info" id="lbInfo"></div>
+</div>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
