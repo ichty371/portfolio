@@ -101,6 +101,8 @@ h2{font:800 clamp(36px,6vw,76px)/1 var(--display);letter-spacing:-.03em;margin:0
 .tilt:hover img,.tilt:hover svg{transform:scale(1.06)}
 .tilt .glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.22),transparent 50%);opacity:0;transition:opacity .3s}
 .tilt:hover .glare{opacity:1}
+.tilt.round{border-radius:50%;aspect-ratio:1;width:min(100%,520px);margin-inline:auto;background:none;box-shadow:0 30px 60px -24px rgba(0,0,0,.7)}
+.tilt.round img{object-fit:contain}
 .p-year{font:600 15px var(--body);color:var(--accent);font-variant-numeric:tabular-nums}
 .project h3{font:600 clamp(26px,3.4vw,44px)/1.1 var(--display);letter-spacing:-.02em;margin:8px 0 10px}
 .p-role{color:var(--mint);font-weight:500;margin:0 0 14px}

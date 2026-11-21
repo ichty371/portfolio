@@ -86,7 +86,7 @@ $("#marquee").innerHTML = sk + sk;
 
 $("#projectList").innerHTML = D.projects.map((p, i) => `
   <article class="project reveal">
-    <div class="p-media"><div class="tilt" data-cursor="Look">${media(p.image, topoSVG(i + 1), p.title)}<div class="glare"></div></div></div>
+    <div class="p-media"><div class="tilt${p.shape === "circle" ? " round" : ""}" data-cursor="Look">${media(p.image, topoSVG(i + 1), p.title)}<div class="glare"></div></div></div>
     <div>
       <span class="p-year">${esc(p.year)}</span>
       <h3>${esc(p.title)}</h3>

@@ -22,7 +22,8 @@ window.PORTFOLIO = {
       year: "2026",
       role: "Bachelor's thesis · Lund University · Pass with distinction",
       tags: ["Urban heat islands", "Landsat LST", "MODIS", "Google Earth Engine", "ArcGIS Pro"],
-      image: "images/project-thesis.jpg",
+      image: "images/project-thesis.png",
+      shape: "circle",
       description:
         "Compared how surface urban heat islands developed in Malta and in Zaragoza, Spain, two places with the same Mediterranean climate. Using summer land surface temperatures from 2013–2025, plus land cover, impervious surfaces and NDVI, I found that Malta has no classic daytime heat island (its built-up rural areas were warmer than the towns), while Zaragoza's city was clearly hotter than its surroundings. Night-time MODIS data from 2003–2025 showed the urban heat island growing in both places.",
       link: ""
@@ -64,14 +65,14 @@ window.PORTFOLIO = {
       tags: ["Hackathon", "Urban green space", "Satellite data", "Shadow modelling", "Interactive map"],
       image: "images/project-vintergront.jpg",
       description:
-        "Green spaces are usually judged by how they look in summer, but in December Lund gets only about seven hours of daylight, and that is when people most need to get outside. In a two-day hackathon our team built a Winter Quality Index for Lund's parks. It combines hours of winter sunlight (from a shadow model of the sun's path on 21 December, with bare tree canopies treated as see-through) with how green each park stays in winter, measured from satellite data. The index showed which parks need improvements most. We added a winter biodiversity index, a look at lighting near parks after dark and an interactive map, and suggested fixes such as evergreen trees, winter-flowering plants, better lighting and snow clearing.",
+        "Green spaces are usually judged by how they look in summer, but in December Lund gets only about seven hours of daylight, and that is when people most need to get outside. In a two-day hackathon our team built a Winter Quality Index for Lund's parks. It combines hours of winter sunlight (from a shadow model of the sun's path on 21 December, with bare tree canopies treated as see-through) with how green each park stays in winter, measured from satellite data. The index showed which parks need improvements most. We added a winter biodiversity index, a look at lighting near parks after dark and an interactive map, and suggested fixes such as evergreen trees, winter-flowering plants, better lighting and snow clearing. During the project we also created an interactive website where anyone can explore the results on a map.",
       link: ""
     }
   ],
 
   maps: [
     { title: "Average Land Surface Temperature, Malta 2013–2025", year: "2026", tools: "Landsat · ArcGIS Pro", image: "images/map-malta-lst.jpg", description: "Mean summer land surface temperature across Malta, from my bachelor's thesis." },
-    { title: "10-year Mean Land Surface Temperature, Zaragoza", year: "2026", tools: "Landsat · ArcGIS Pro", image: "images/map-zaragoza-lst.jpg", description: "Mean summer surface temperature around Zaragoza, showing the city's heat island." },
+    { title: "Winter Sun at Ground Level, Lund", year: "2026", tools: "Lidar height model · Python shadow model", image: "images/map-lund-winter-sun.jpg", description: "Share of daylight in direct sun on 21 December, from the Vintergrönt hackathon project. The sun position was simulated every 2 minutes, with only buildings casting shadows." },
     { title: "Burn Severity of the 2024 Jasper Wildfire", year: "2026", tools: "ArcPy tool · Landsat 8/9", image: "images/map-jasper-burn-severity.jpg", description: "Output of my dNBR burn severity tool for Jasper National Park, Canada." },
     { title: "Soil Deposition Potential Index, Nyamagabe", year: "2026", tools: "ArcGIS Pro · field data", image: "images/map-rwanda-sdpi.jpg", description: "Where eroded soil is likely to settle in the Rwandan study catchment." },
     { title: "10-year Mean NDVI, Zaragoza", year: "2026", tools: "ArcGIS Pro", image: "images/map-zaragoza-ndvi.jpg", description: "Vegetation greenness around Zaragoza, 2015–2025." },
