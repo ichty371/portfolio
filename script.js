@@ -86,7 +86,7 @@ $("#marquee").innerHTML = sk + sk;
 
 $("#projectList").innerHTML = D.projects.map((p, i) => `
   <article class="project reveal">
-    <div class="p-media"><div class="tilt${p.shape === "circle" ? " round" : ""}" data-cursor="Look">${media(p.image, topoSVG(i + 1), p.title)}<div class="glare"></div></div></div>
+    <div class="p-media"><div class="tilt${p.shape === "circle" ? " round" : p.shape === "cutout" ? " cutout" : ""}" data-cursor="Look">${media(p.image, topoSVG(i + 1), p.title)}<div class="glare"></div></div></div>
     <div>
       <span class="p-year">${esc(p.year)}</span>
       <h3>${esc(p.title)}</h3>
@@ -100,7 +100,7 @@ $("#projectList").innerHTML = D.projects.map((p, i) => `
 $("#mapGrid").innerHTML = D.maps.map((m, i) => `
   <button class="map-card reveal" data-kind="map" data-i="${i}" data-cursor="Zoom" style="transition-delay:${(i % 3) * 0.08}s">
     <div class="sheet">${media(m.image, whiteMapSVG(i, m.title), m.title)}</div>
-    <div class="map-cap"><strong>${esc(m.title)}</strong><span>${esc(m.year)} · ${esc(m.tools)}</span></div>
+    <div class="map-cap"><strong>${esc(m.title)}</strong><span>${[m.year, m.tools].filter(Boolean).map(esc).join(" · ")}</span></div>
   </button>`).join("");
 
 const certCard = (c, i) => `
@@ -272,7 +272,7 @@ function showPage() {
   } else lbImg.innerHTML = lbKind === "map" ? whiteMapSVG(0, it.title) : certSVG(it, 0);
   const nav = pages.length > 1 ? `<div class="lb-pages">${pages.map((_, k) => `<button data-page="${k}" class="${k === lbPage ? "on" : ""}">Page ${k + 1}</button>`).join("")}</div>` : "";
   lbInfo.innerHTML = lbKind === "map"
-    ? `<strong>${esc(it.title)}</strong><span>${esc(it.year)} · ${esc(it.tools)} — ${esc(it.description)}</span>`
+    ? `<strong>${esc(it.title)}</strong><span>${[it.year, it.tools].filter(Boolean).map(esc).join(" · ")} — ${esc(it.description)}</span>`
     : `<strong>${esc(it.title)}</strong><span>${[it.issuer, it.date].filter(Boolean).map(esc).join(" · ")}</span>${it.details ? `<p class="lb-details">${esc(it.details)}</p>` : ""}${nav}`;
   zoom = 1; px = py = 0; lbImg.style.transformOrigin = "50% 50%"; apply();
   requestAnimationFrame(() => lbImg.style.setProperty("--h", Math.max(200, stage.clientHeight - 32) + "px"));

@@ -63,7 +63,8 @@ window.PORTFOLIO = {
       year: "2026",
       role: "SESAC hackathon · Society from Space Challenge · Team of six",
       tags: ["Hackathon", "Urban green space", "Satellite data", "Shadow modelling", "Interactive map"],
-      image: "images/project-vintergront.jpg",
+      image: "images/project-vintergront.png",
+      shape: "cutout",
       description:
         "Green spaces are usually judged by how they look in summer, but in December Lund gets only about seven hours of daylight, and that is when people most need to get outside. In a two-day hackathon our team built a Winter Quality Index for Lund's parks. It combines hours of winter sunlight (from a shadow model of the sun's path on 21 December, with bare tree canopies treated as see-through) with how green each park stays in winter, measured from satellite data. The index showed which parks need improvements most. We added a winter biodiversity index, a look at lighting near parks after dark and an interactive map, and suggested fixes such as evergreen trees, winter-flowering plants, better lighting and snow clearing. During the project we also created an interactive website where anyone can explore the results on a map.",
       link: ""
@@ -71,15 +72,16 @@ window.PORTFOLIO = {
   ],
 
   maps: [
-    { title: "Average Land Surface Temperature, Malta 2013–2025", year: "2026", tools: "Landsat · ArcGIS Pro", image: "images/map-malta-lst.jpg", description: "Mean summer land surface temperature across Malta, from my bachelor's thesis." },
-    { title: "Winter Sun at Ground Level, Lund", year: "2026", tools: "Lidar height model · Python shadow model", image: "images/map-lund-winter-sun.jpg", description: "Share of daylight in direct sun on 21 December, from the Vintergrönt hackathon project. The sun position was simulated every 2 minutes, with only buildings casting shadows." },
+    { title: "Walking Distance from Home to a Park, Lund", year: "2026", tools: "OpenStreetMap · Python", image: "images/map-lund-walk-to-park.jpg", description: "From the Vintergrönt hackathon. Every home building is coloured by its walking distance to a park of at least 1 ha. 73% of residents meet Lund's 300 m target." },
+    { title: "Estimated Soil Loss Rate, Nyamagabe Catchment", year: "2026", tools: "RUSLE · ArcGIS Pro", image: "images/map-rwanda-soil-loss.jpg", description: "Yearly soil loss modelled with RUSLE from the data we gathered in the field in Rwanda." },
     { title: "Burn Severity of the 2024 Jasper Wildfire", year: "2026", tools: "ArcPy tool · Landsat 8/9", image: "images/map-jasper-burn-severity.jpg", description: "Output of my dNBR burn severity tool for Jasper National Park, Canada." },
-    { title: "Soil Deposition Potential Index, Nyamagabe", year: "2026", tools: "ArcGIS Pro · field data", image: "images/map-rwanda-sdpi.jpg", description: "Where eroded soil is likely to settle in the Rwandan study catchment." },
-    { title: "10-year Mean NDVI, Zaragoza", year: "2026", tools: "ArcGIS Pro", image: "images/map-zaragoza-ndvi.jpg", description: "Vegetation greenness around Zaragoza, 2015–2025." },
-    { title: "Sen's Slope of Surface Temperature, Malta", year: "2026", tools: "Landsat · ArcGIS Pro", image: "images/map-malta-sens-slope.jpg", description: "Pixel-by-pixel trend in yearly land surface temperature in Malta, 2013–2025 (°C/year). Red areas warmed, blue areas cooled." },
-    { title: "Verkaå Catchment Land Cover, 2016", year: "2025", tools: "Aerial photos · ArcGIS Pro", image: "images/map-verka-2016.jpg", description: "Land cover digitised from aerial photos for the Verkaå study in Scania." },
-    { title: "Management Practices and Mitigation, Nyamagabe", year: "2026", tools: "ArcGIS Pro · fieldwork", image: "images/map-rwanda-mitigation.jpg", description: "Current land management practices and recommended erosion-control measures in the Rwandan catchment." },
-    { title: "Stable Land Use and Land Cover, Zaragoza 2018–2023", year: "2026", tools: "Copernicus land cover · ArcGIS Pro", image: "images/map-zaragoza-lulc.jpg", description: "Areas whose land use stayed the same, used to compare temperatures between land cover types." }
+    { title: "Winter Sun at Ground Level, Lund", year: "2026", tools: "Lidar height model · Python shadow model", image: "images/map-lund-winter-sun.jpg", description: "Share of daylight in direct sun on 21 December, from the Vintergrönt hackathon project. The sun position was simulated every 2 minutes, with only buildings casting shadows." },
+    { title: "Land Cover Types of Africa", year: "2023", tools: "ArcGIS Pro", image: "images/map-africa-landcover.jpg", description: "Africa divided into desert, semi-desert, semi-arid, dry forest, moist forest and forest-and-mountain land cover zones." },
+    { title: "Anthill Locations and Measurement Area", year: "", tools: "Drone imagery · field measurements", image: "images/map-anthills.jpg", description: "Anthills mapped from point data measured on site, together with a slope raster from a drone-derived terrain model." },
+    { title: "Land Cover of Neighbouring Areas, Verkaå 2016", year: "2025", tools: "Aerial photos · ArcGIS Pro", image: "images/map-verka-neighbouring-2016.jpg", description: "Land cover digitised from aerial photos for the Verkaå study in Scania, joined with the neighbouring study areas." },
+    { title: "GPS Accuracy Testing, Lund", year: "2023", tools: "GPS · ArcGIS", image: "images/map-lund-gps-accuracy.jpg", description: "Comparing positions from a GPS test and the Min Karta app with randomly generated target points, at 1:1000." },
+    { title: "10-year Mean NDVI, Zaragoza", year: "2026", tools: "ArcGIS Pro", image: "images/map-zaragoza-ndvi.jpg", description: "Vegetation greenness around Zaragoza, 2015–2025, from my bachelor's thesis." },
+    { title: "Management Practices and Mitigation, Nyamagabe", year: "2026", tools: "ArcGIS Pro · fieldwork", image: "images/map-rwanda-mitigation.jpg", description: "Current land management practices and recommended erosion-control measures in the Rwandan catchment." }
   ],
 
   certificates: [
