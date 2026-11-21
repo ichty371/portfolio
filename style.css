@@ -43,9 +43,9 @@ img{max-width:100%;display:block}
 .logo{font:800 18px var(--display);letter-spacing:-.02em}
 .logo b{color:var(--accent)}
 .logo{display:inline-flex;align-items:center;min-height:44px}
-.logo img{height:48px;width:auto;display:block;transition:transform .4s cubic-bezier(.2,.9,.2,1)}
+.logo img{height:62px;width:auto;display:block;transition:transform .4s cubic-bezier(.2,.9,.2,1)}
 .logo:hover img{transform:rotate(-6deg) scale(1.08)}
-.nav.solid .logo img{height:40px}
+.nav.solid .logo img{height:50px}
 .nav nav{display:flex;gap:clamp(12px,3vw,32px);flex-wrap:wrap}
 .nav nav a{font-weight:500;font-size:15px;color:var(--muted);position:relative;padding:6px 0;transition:color .2s}
 .nav nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .35s}
