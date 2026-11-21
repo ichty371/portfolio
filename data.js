@@ -23,6 +23,7 @@ window.PORTFOLIO = {
       role: "Bachelor's thesis · Lund University · Pass with distinction",
       tags: ["Urban heat islands", "Landsat LST", "MODIS", "Google Earth Engine", "ArcGIS Pro"],
       image: "images/project-thesis.png",
+      full: "images/thesis-full.png",
       shape: "circle",
       description:
         "Compared how surface urban heat islands developed in Malta and in Zaragoza, Spain, two places with the same Mediterranean climate. Using summer land surface temperatures from 2013–2025, plus land cover, impervious surfaces and NDVI, I found that Malta has no classic daytime heat island (its built-up rural areas were warmer than the towns), while Zaragoza's city was clearly hotter than its surroundings. Night-time MODIS data from 2003–2025 showed the urban heat island growing in both places.",
