@@ -127,7 +127,14 @@ h2{font:800 clamp(36px,6vw,76px)/1 var(--display);letter-spacing:-.03em;margin:0
 .cert{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:14px;transition:transform .4s cubic-bezier(.2,.9,.2,1),border-color .3s;color:inherit;font:inherit;text-align:left}
 .cert:hover{transform:translateY(-8px) rotate(-.6deg);border-color:var(--mint)}
 .cert .thumb{border-radius:10px;overflow:hidden;aspect-ratio:1.414/1}
-.cert .thumb img,.cert .thumb svg{width:100%;height:100%;object-fit:cover}
+.cert .thumb{background:#fff}
+.cert .thumb img,.cert .thumb svg{width:100%;height:100%;object-fit:cover;object-position:top}
+.cert-group{font:600 clamp(20px,2.2vw,26px)/1.2 var(--display);margin:0 0 20px;color:var(--ink)}
+.certs+.cert-group{margin-top:clamp(40px,5vw,64px)}
+.lb-details{max-width:80ch;margin:10px auto 0;color:var(--ink);font-size:15px;line-height:1.6}
+.lb-pages{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.lb-pages button{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:14px}
+.lb-pages button.on,.lb-pages button:hover{background:var(--accent);border-color:var(--accent);color:#111}
 .cert strong{font:600 16px/1.35 var(--display)}
 .cert span{color:var(--muted);font-size:14px}
 
@@ -143,8 +150,8 @@ h2{font:800 clamp(36px,6vw,76px)/1 var(--display);letter-spacing:-.03em;margin:0
 /* ---------- lightbox ---------- */
 .lightbox{position:fixed;inset:0;z-index:200;background:rgba(17,20,18,.95);backdrop-filter:blur(8px);display:grid;grid-template-rows:1fr auto;opacity:0;pointer-events:none;transition:opacity .35s}
 .lightbox.open{opacity:1;pointer-events:auto}
-.lb-stage{overflow:hidden;display:grid;place-items:center;touch-action:none}
-.lb-img{width:min(90vw,1200px);max-height:80vh;aspect-ratio:var(--ar,4/3);transform-origin:0 0;transition:transform .08s linear}
+.lb-stage{min-height:0;overflow:hidden;display:grid;place-items:center;touch-action:none}
+.lb-img{width:min(90vw,1200px,calc(var(--h,76vh) * var(--ar,1)));max-height:var(--h,76vh);aspect-ratio:var(--ar,4/3);transform-origin:0 0;transition:transform .08s linear}
 .lb-img img,.lb-img svg{width:100%;height:100%;object-fit:contain;border-radius:8px;background:#fff;user-select:none;-webkit-user-drag:none}
 .lb-info{padding:16px max(5vw,16px) 28px;text-align:center}
 .lb-info strong{font:600 20px var(--display);display:block}

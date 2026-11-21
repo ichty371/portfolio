@@ -103,15 +103,20 @@ $("#mapGrid").innerHTML = D.maps.map((m, i) => `
     <div class="map-cap"><strong>${esc(m.title)}</strong><span>${esc(m.year)} · ${esc(m.tools)}</span></div>
   </button>`).join("");
 
-$("#certList").innerHTML = D.certificates.map((c, i) => `
-  <button class="cert reveal" data-kind="cert" data-i="${i}" data-cursor="View" style="transition-delay:${(i % 4) * 0.08}s">
+const certCard = (c, i) => `
+  <button class="cert reveal" data-kind="cert" data-i="${i}" data-cursor="View">
     <div class="thumb">${media(c.image, certSVG(c, i), c.title)}</div>
     <strong>${esc(c.title)}</strong><span>${esc(c.issuer)} · ${esc(c.date)}</span>
-  </button>`).join("");
+  </button>`;
+const certGroups = [["participation", "Participation & volunteering"], ["courses", "Completed studies"]];
+$("#certList").innerHTML = certGroups.map(([g, label]) => {
+  const items = D.certificates.map((c, i) => [c, i]).filter(([c]) => (c.group || "participation") === g);
+  return items.length ? `<h3 class="cert-group reveal">${label}</h3><div class="certs">${items.map(([c, i]) => certCard(c, i)).join("")}</div>` : "";
+}).join("");
 
 const mail = $("#mail");
 mail.textContent = D.email; mail.href = `mailto:${D.email}`;
-$("#socials").innerHTML = D.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener" class="magnetic" data-cursor="Open">${esc(l.label)}</a>`).join("");
+$("#socials").innerHTML = (D.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener" class="magnetic" data-cursor="Open">${esc(l.label)}</a>`).join("");
 $("#footName").textContent = `© ${D.name}`;
 $("#year").textContent = new Date().getFullYear();
 
@@ -202,7 +207,7 @@ const ro = new ResizeObserver(() => { size(); if (reduce) draw(0); });
 ro.observe(cv);
 $(".hero").addEventListener("pointermove", e => {
   const r = cv.getBoundingClientRect(); hx = e.clientX - r.left; hy = e.clientY - r.top;
-  const lat = (59.4 - (hy / H) * 0.2).toFixed(4), lon = (17.9 + (hx / W) * 0.3).toFixed(4);
+  const lat = (55.80 - (hy / H) * 0.2).toFixed(4), lon = (13.04 + (hx / W) * 0.3).toFixed(4);
   $("#coords").textContent = `${lat}° N · ${lon}° E`;
 });
 $(".hero").addEventListener("pointerleave", () => { hx = hy = -999; });
@@ -254,18 +259,33 @@ else (function frame(t) { if (heroVisible) draw(t); requestAnimationFrame(frame)
 const lb = $("#lightbox"), lbImg = $("#lbImg"), lbInfo = $("#lbInfo"), stage = $("#lbStage");
 let zoom = 1, px = 0, py = 0, drag = null, lastFocus = null;
 const apply = () => { lbImg.style.transform = `translate(${px}px,${py}px) scale(${zoom})`; };
+let lbItem = null, lbKind = "", lbPage = 0;
+function showPage() {
+  const it = lbItem, pages = it.pages || [it.image];
+  const src = pages[lbPage];
+  lbImg.style.setProperty("--ar", lbKind === "map" ? "1" : "1.414");
+  if (src) {
+    lbImg.innerHTML = `<img src="${esc(src)}" alt="${esc(it.title)}">`;
+    const im = lbImg.querySelector("img");
+    const setAr = () => { if (im.naturalWidth) lbImg.style.setProperty("--ar", (im.naturalWidth / im.naturalHeight).toFixed(4)); };
+    im.complete ? setAr() : im.addEventListener("load", setAr);
+  } else lbImg.innerHTML = lbKind === "map" ? whiteMapSVG(0, it.title) : certSVG(it, 0);
+  const nav = pages.length > 1 ? `<div class="lb-pages">${pages.map((_, k) => `<button data-page="${k}" class="${k === lbPage ? "on" : ""}">Page ${k + 1}</button>`).join("")}</div>` : "";
+  lbInfo.innerHTML = lbKind === "map"
+    ? `<strong>${esc(it.title)}</strong><span>${esc(it.year)} · ${esc(it.tools)} — ${esc(it.description)}</span>`
+    : `<strong>${esc(it.title)}</strong><span>${esc(it.issuer)} · ${esc(it.date)}</span>${it.details ? `<p class="lb-details">${esc(it.details)}</p>` : ""}${nav}`;
+  zoom = 1; px = py = 0; lbImg.style.transformOrigin = "50% 50%"; apply();
+  requestAnimationFrame(() => lbImg.style.setProperty("--h", Math.max(200, stage.clientHeight - 32) + "px"));
+}
+addEventListener("resize", () => { if (lb.classList.contains("open")) lbImg.style.setProperty("--h", Math.max(200, stage.clientHeight - 32) + "px"); });
 function openLB(kind, i) {
   lastFocus = document.activeElement;
-  const item = kind === "map" ? D.maps[i] : D.certificates[i];
-  lbImg.style.setProperty("--ar", kind === "map" ? "1" : "1.414");
-  lbImg.innerHTML = kind === "map" ? media(item.image, whiteMapSVG(i, item.title), item.title) : media(item.image, certSVG(item, i), item.title);
-  lbInfo.innerHTML = kind === "map"
-    ? `<strong>${esc(item.title)}</strong><span>${esc(item.year)} · ${esc(item.tools)} — ${esc(item.description)}</span>`
-    : `<strong>${esc(item.title)}</strong><span>${esc(item.issuer)} · ${esc(item.date)}</span>`;
-  zoom = 1; px = py = 0; lbImg.style.transformOrigin = "50% 50%"; apply();
+  lbKind = kind; lbItem = kind === "map" ? D.maps[i] : D.certificates[i]; lbPage = 0;
+  showPage();
   lb.classList.add("open"); lb.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden";
   $("#lbClose").focus();
 }
+lbInfo.addEventListener("click", e => { const b = e.target.closest("[data-page]"); if (b) { lbPage = +b.dataset.page; showPage(); } });
 function closeLB() { lb.classList.remove("open"); lb.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; lastFocus?.focus(); }
 document.addEventListener("click", e => { const b = e.target.closest("[data-kind]"); if (b) openLB(b.dataset.kind, +b.dataset.i); });
 $("#lbClose").addEventListener("click", closeLB);
