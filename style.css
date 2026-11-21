@@ -103,6 +103,8 @@ h2{font:800 clamp(36px,6vw,76px)/1 var(--display);letter-spacing:-.03em;margin:0
 .tilt:hover .glare{opacity:1}
 .tilt.round{border-radius:50%;aspect-ratio:1;width:min(100%,520px);margin-inline:auto;background:none;box-shadow:0 30px 60px -24px rgba(0,0,0,.7)}
 .tilt.round img{object-fit:contain}
+.tilt[data-kind]{cursor:zoom-in}
+.lb-img.clear img{background:none}
 .tilt.cutout{border-radius:0;box-shadow:none;aspect-ratio:auto;overflow:visible}
 .tilt.cutout img{height:auto;object-fit:contain;filter:drop-shadow(0 24px 40px rgba(0,0,0,.55))}
 .tilt.cutout .glare{display:none}

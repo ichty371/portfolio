@@ -86,7 +86,7 @@ $("#marquee").innerHTML = sk + sk;
 
 $("#projectList").innerHTML = D.projects.map((p, i) => `
   <article class="project reveal">
-    <div class="p-media"><div class="tilt${p.shape === "circle" ? " round" : p.shape === "cutout" ? " cutout" : ""}" data-cursor="Look">${media(p.image, topoSVG(i + 1), p.title)}<div class="glare"></div></div></div>
+    <div class="p-media"><div class="tilt${p.shape === "circle" ? " round" : p.shape === "cutout" ? " cutout" : ""}" data-kind="project" data-i="${i}" data-cursor="Zoom" role="button" tabindex="0" aria-label="Open ${esc(p.title)} image full size">${media(p.image, topoSVG(i + 1), p.title)}<div class="glare"></div></div></div>
     <div>
       <span class="p-year">${esc(p.year)}</span>
       <h3>${esc(p.title)}</h3>
@@ -263,7 +263,8 @@ let lbItem = null, lbKind = "", lbPage = 0;
 function showPage() {
   const it = lbItem, pages = it.pages || [it.image];
   const src = pages[lbPage];
-  lbImg.style.setProperty("--ar", lbKind === "map" ? "1" : "1.414");
+  lbImg.style.setProperty("--ar", lbKind === "cert" ? "1.414" : "1");
+  lbImg.classList.toggle("clear", lbKind === "project" && !!it.shape);
   if (src) {
     lbImg.innerHTML = `<img src="${esc(src)}" alt="${esc(it.title)}">`;
     const im = lbImg.querySelector("img");
@@ -271,7 +272,7 @@ function showPage() {
     im.complete ? setAr() : im.addEventListener("load", setAr);
   } else lbImg.innerHTML = lbKind === "map" ? whiteMapSVG(0, it.title) : certSVG(it, 0);
   const nav = pages.length > 1 ? `<div class="lb-pages">${pages.map((_, k) => `<button data-page="${k}" class="${k === lbPage ? "on" : ""}">Page ${k + 1}</button>`).join("")}</div>` : "";
-  lbInfo.innerHTML = lbKind === "map"
+  lbInfo.innerHTML = lbKind === "project" ? `<strong>${esc(it.title)}</strong><span>${esc(it.role)}</span>` : lbKind === "map"
     ? `<strong>${esc(it.title)}</strong><span>${[it.year, it.tools].filter(Boolean).map(esc).join(" · ")} — ${esc(it.description)}</span>`
     : `<strong>${esc(it.title)}</strong><span>${[it.issuer, it.date].filter(Boolean).map(esc).join(" · ")}</span>${it.details ? `<p class="lb-details">${esc(it.details)}</p>` : ""}${nav}`;
   zoom = 1; px = py = 0; lbImg.style.transformOrigin = "50% 50%"; apply();
@@ -280,7 +281,7 @@ function showPage() {
 addEventListener("resize", () => { if (lb.classList.contains("open")) lbImg.style.setProperty("--h", Math.max(200, stage.clientHeight - 32) + "px"); });
 function openLB(kind, i) {
   lastFocus = document.activeElement;
-  lbKind = kind; lbItem = kind === "map" ? D.maps[i] : D.certificates[i]; lbPage = 0;
+  lbKind = kind; lbItem = kind === "map" ? D.maps[i] : kind === "project" ? D.projects[i] : D.certificates[i]; lbPage = 0;
   showPage();
   lb.classList.add("open"); lb.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden";
   $("#lbClose").focus();
@@ -291,7 +292,7 @@ document.addEventListener("click", e => { const b = e.target.closest("[data-kind
 $("#lbClose").addEventListener("click", closeLB);
 let dragged = false;
 stage.addEventListener("click", e => { if (dragged) { dragged = false; return; } if (e.target === stage) closeLB(); });
-addEventListener("keydown", e => { if (e.key === "Escape" && lb.classList.contains("open")) closeLB(); });
+addEventListener("keydown", e => { if (e.key === "Escape" && lb.classList.contains("open")) closeLB(); if ((e.key === "Enter" || e.key === " ") && e.target.matches?.(".tilt[data-kind]")) { e.preventDefault(); openLB("project", +e.target.dataset.i); } });
 stage.addEventListener("wheel", e => { e.preventDefault(); zoom = Math.min(5, Math.max(1, zoom * (e.deltaY < 0 ? 1.15 : 0.87))); if (zoom === 1) px = py = 0; apply(); }, { passive: false });
 stage.addEventListener("dblclick", () => { zoom = zoom > 1 ? 1 : 2.5; px = py = 0; apply(); });
 stage.addEventListener("pointerdown", e => { dragged = false; if (zoom > 1) { e.preventDefault(); drag = { x: e.clientX - px, y: e.clientY - py, sx: e.clientX, sy: e.clientY }; stage.setPointerCapture(e.pointerId); } });

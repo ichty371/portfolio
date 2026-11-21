@@ -42,7 +42,7 @@ window.PORTFOLIO = {
       title: "Verkaå Catchment Land Cover Study",
       year: "2025",
       role: "Group project · Remote sensing course · Pass with distinction",
-      tags: ["Aerial photo interpretation", "Change detection", "Sentinel-2", "Python"],
+      tags: ["Aerial photo interpretation", "Change detection", "Sentinel-2", "Python", "Fieldwork"],
       image: "images/project-verka.jpg",
       description:
         "A remote sensing pilot study in Österlen, Scania, that mapped land cover from aerial photos of 1940, 1999 and 2016 and from Sentinel-2 imagery, and measured how the landscape changed over almost 80 years. I was responsible for the change detection analysis (written in Python), digitised two of the Sentinel-2 areas and brought in extra data. I also created and edited the video that went along with our final submission.",
@@ -61,8 +61,8 @@ window.PORTFOLIO = {
     {
       title: "Vintergrönt: A Winter Greenspace Index for Lund",
       year: "2026",
-      role: "SESAC hackathon · Society from Space Challenge · Team of six",
-      tags: ["Hackathon", "Urban green space", "Satellite data", "Shadow modelling", "Interactive map"],
+      role: "SESAC hackathon · Society from Space Challenge",
+      tags: ["Hackathon", "Urban green space", "Satellite data", "Shadow modelling", "Interactive map", "QGIS", "Python"],
       image: "images/project-vintergront.png",
       shape: "cutout",
       description:
