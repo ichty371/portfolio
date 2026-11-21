@@ -261,7 +261,7 @@ let zoom = 1, px = 0, py = 0, drag = null, lastFocus = null;
 const apply = () => { lbImg.style.transform = `translate(${px}px,${py}px) scale(${zoom})`; };
 let lbItem = null, lbKind = "", lbPage = 0;
 function showPage() {
-  const it = lbItem, pages = it.pages || [it.image];
+  const it = lbItem, pages = it.pages || [it.full || it.image];
   const src = pages[lbPage];
   lbImg.style.setProperty("--ar", lbKind === "cert" ? "1.414" : "1");
   lbImg.classList.toggle("clear", lbKind === "project" && !!it.shape);

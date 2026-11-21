@@ -64,6 +64,7 @@ window.PORTFOLIO = {
       role: "SESAC hackathon · Society from Space Challenge",
       tags: ["Hackathon", "Urban green space", "Satellite data", "Shadow modelling", "Interactive map", "QGIS", "Python"],
       image: "images/project-vintergront.png",
+      full: "images/vintergront-full.png",
       shape: "cutout",
       description:
         "Green spaces are usually judged by how they look in summer, but in December Lund gets only about seven hours of daylight, and that is when people most need to get outside. In a two-day hackathon our team built a Winter Quality Index for Lund's parks. It combines hours of winter sunlight (from a shadow model of the sun's path on 21 December, with bare tree canopies treated as see-through) with how green each park stays in winter, measured from satellite data. The index showed which parks need improvements most. We added a winter biodiversity index, a look at lighting near parks after dark and an interactive map, and suggested fixes such as evergreen trees, winter-flowering plants, better lighting and snow clearing. During the project we also created an interactive website where anyone can explore the results on a map.",
